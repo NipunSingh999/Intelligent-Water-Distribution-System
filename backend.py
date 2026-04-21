@@ -36,6 +36,12 @@ def get_db():
     finally:
         db.close()
 
+from fastapi.responses import RedirectResponse
+
+@app.get("/")
+def root():
+    return RedirectResponse(url="/dashboard/")
+
 class TelemetryPayload(BaseModel):
     zone_id: int
     pressure_bar: float
