@@ -2,10 +2,12 @@ import time
 import random
 import requests
 import threading
+import os
 
-API_URL = "http://127.0.0.1:8000/api/telemetry"
+PORT = os.environ.get("PORT", 8000)
+API_URL = f"http://127.0.0.1:{PORT}/api/telemetry"
 
-def simulate_zone(zone_id):
+def simulate_zone(zone_id: int):
     while True:
         # 1. Normal state generation
         pressure = random.uniform(48.0, 52.0)
